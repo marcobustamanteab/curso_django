@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Hoy es: {{fecha_actual.day}}  / {{fecha_actual.month}} / {{fecha_actual.year}}</h3>
+     <h2>Cursos Disponibles:</h2>
+     <p>Profesor a cargo: {{nombre_persona}} {{apellido_persona}}</p>
+     <p>Cursos:</p>
+     <p>
+         <ul>
+             {% if cursos %}
+                {% for curso in cursos %}
+                    <li>{{curso}}</li>
+                {% endfor %}
+             {% endif %}
+         </ul>
+     </p>
+     
+     
+</body>
+</html>
