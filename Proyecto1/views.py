@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 import datetime
-from django.template import loader
+from django.shortcuts import render 
 
 def saludo(request):
 
@@ -20,7 +20,7 @@ def damefecha(request):
     document="""<html>
     <body>
     <h2>
-    Fecha y hora actual %s
+    La Fecha y hora actual %s
     </h2>
     </body>
     </html>""" % fecha_actual
@@ -45,16 +45,17 @@ class Persona(object):
 
 
 def cursos(request):
-    doc_externo=loader.get_template('template_01.html')
+
     ahora=datetime.datetime.now()
     cursos = ["Programación I", "Programación II", "Bussines Inteligent", "AI Python"]
     p1=Persona("Juan", "Diaz")
 
-    document=doc_externo.render({
+    return render(
+        request, 
+        "template_01.html",
+        {
         "nombre_persona":p1.nombre,
         "apellido_persona":p1.apellido,
         "fecha_actual":ahora,
         "cursos":cursos
          })
-    
-    return HttpResponse(document)
